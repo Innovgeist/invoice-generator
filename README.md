@@ -2,8 +2,11 @@
 
 A modern, professional invoice generator built with vanilla HTML, CSS, and JavaScript. Create beautiful, customizable invoices with live preview and export to PDF.
 
+**Live Demo:** [invoice.innovgeist.com](https://invoice.innovgeist.com)
+
 ![Invoice Studio](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Website](https://img.shields.io/badge/website-invoice.innovgeist.com-black.svg)
 
 ## Features
 
