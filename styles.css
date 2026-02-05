@@ -494,6 +494,13 @@ textarea {
     height: 200px;
     background: linear-gradient(135deg, var(--accent-subtle) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 0;
+}
+
+@media print {
+    .invoice-decoration {
+        display: none !important;
+    }
 }
 
 /* Invoice Header */
@@ -504,6 +511,8 @@ textarea {
     padding-bottom: var(--space-lg);
     border-bottom: 1px solid var(--border);
     margin-bottom: var(--space-xl);
+    position: relative;
+    z-index: 1;
 }
 
 .invoice-brand {
@@ -566,6 +575,8 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    position: relative;
+    z-index: 2;
 }
 
 .invoice-title {
@@ -936,8 +947,15 @@ textarea {
    ============================================ */
 
 @media print {
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
     body {
         background: white !important;
+        margin: 0;
+        padding: 0;
     }
 
     body * {
@@ -956,10 +974,64 @@ textarea {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        padding: 15mm !important;
+        padding: 10mm !important;
         box-shadow: none !important;
         transform: none !important;
         border-radius: 0 !important;
+        overflow: visible !important;
+    }
+
+    .invoice-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        overflow: visible !important;
+    }
+
+    .invoice-meta {
+        flex-shrink: 0 !important;
+        text-align: right !important;
+        visibility: visible !important;
+        z-index: 10 !important;
+    }
+
+    .invoice-title {
+        font-size: 1.5rem !important;
+        visibility: visible !important;
+        color: #000 !important;
+        text-align: right !important;
+        margin-bottom: 8px !important;
+    }
+
+    .meta-details {
+        visibility: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        align-items: flex-end !important;
+    }
+
+    .meta-row {
+        visibility: visible !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        gap: 10px !important;
+        text-align: right !important;
+    }
+
+    .meta-label,
+    .meta-value {
+        visibility: visible !important;
+    }
+
+    .meta-value {
+        min-width: 80px !important;
+        text-align: right !important;
+    }
+
+    .invoice-decoration {
+        display: none !important;
+        visibility: hidden !important;
     }
 
     .no-print {
@@ -985,7 +1057,8 @@ textarea {
 
     .sidebar,
     .preview-header,
-    .preview-badge {
+    .preview-badge,
+    .app-footer {
         display: none !important;
     }
 
