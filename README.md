@@ -17,6 +17,8 @@ A modern, professional invoice generator built with vanilla HTML, CSS, and JavaS
 
 ### Client Management
 - **Client Information** - Capture client name, email, phone, and address
+- **Client History** - Save up to 10 clients in localStorage for quick reuse
+- **Quick Load** - Select saved clients from dropdown to auto-fill form
 - **Auto-formatting** - Clean display of client details on invoice
 
 ### Invoice Configuration
@@ -119,6 +121,8 @@ Or simply double-click the `index.html` file.
 
 2. **Enter Client Information**
    - Add client's name and contact details
+   - Click "Save Client" to save for future use
+   - Or select a previously saved client from the dropdown
 
 3. **Configure Invoice**
    - Set invoice number
@@ -171,6 +175,14 @@ invoice-studio/
 | Edge    | 80+     |
 
 ## API Reference
+
+### Client History Storage
+
+Client data is stored in the browser's localStorage:
+- **Key**: `invoiceStudio_clients`
+- **Format**: JSON array of client objects
+- **Limit**: Maximum 10 clients (oldest removed when exceeded)
+- **Persistence**: Data persists across browser sessions
 
 ### Currency Converter
 

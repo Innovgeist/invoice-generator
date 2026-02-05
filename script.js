@@ -12,6 +12,11 @@ class InvoiceGenerator {
         this.logoDataUrl = 'logo.png';
         this.signatureDataUrl = null;
 
+        // Client history configuration
+        this.savedClients = [];
+        this.STORAGE_KEY = 'invoiceStudio_clients';
+        this.MAX_CLIENTS = 10;
+
         // Default columns configuration
         this.columns = [
             { id: 'description', title: 'Description', type: 'text', align: 'left', width: '40%' },
@@ -28,6 +33,7 @@ class InvoiceGenerator {
         this.bindEvents();
         this.setDefaultDates();
         this.setDefaultLogo();
+        this.loadSavedClients();
         this.renderTableHeaders();
         this.addService(); // Start with one empty service row
         this.updatePreview();
@@ -120,6 +126,10 @@ class InvoiceGenerator {
         this.signatureUploadPlaceholder = document.getElementById('signatureUploadPlaceholder');
         this.clearSignatureBtn = document.getElementById('clearSignatureBtn');
         this.displaySignature = document.getElementById('displaySignature');
+
+        // Client history
+        this.saveClientBtn = document.getElementById('saveClientBtn');
+        this.clientHistorySelect = document.getElementById('clientHistory');
     }
 
     bindEvents() {
@@ -188,6 +198,10 @@ class InvoiceGenerator {
         this.signatureUpload.addEventListener('click', () => this.signatureInput.click());
         this.signatureInput.addEventListener('change', (e) => this.handleSignatureUpload(e));
         this.clearSignatureBtn.addEventListener('click', () => this.clearSignature());
+
+        // Client history
+        this.saveClientBtn.addEventListener('click', () => this.saveCurrentClient());
+        this.clientHistorySelect.addEventListener('change', (e) => this.handleClientSelect(e));
     }
 
     setDefaultDates() {
@@ -315,6 +329,119 @@ class InvoiceGenerator {
 
         // Reset invoice signature
         this.displaySignature.style.display = 'none';
+    }
+
+    // Client History Management
+    loadSavedClients() {
+        try {
+            const stored = localStorage.getItem(this.STORAGE_KEY);
+            this.savedClients = stored ? JSON.parse(stored) : [];
+        } catch (e) {
+            console.error('Failed to load saved clients:', e);
+            this.savedClients = [];
+        }
+        this.renderClientDropdown();
+    }
+
+    saveCurrentClient() {
+        const name = this.clientNameInput.value.trim();
+        const email = this.clientEmailInput.value.trim();
+        const phone = this.clientPhoneInput.value.trim();
+        const address = this.clientAddressInput.value.trim();
+
+        if (!name) {
+            alert('Please enter a client name before saving.');
+            return;
+        }
+
+        const client = {
+            id: Date.now(),
+            name,
+            email,
+            phone,
+            address,
+            savedAt: Date.now()
+        };
+
+        // Check if client with same name exists
+        const existingIndex = this.savedClients.findIndex(c => c.name.toLowerCase() === name.toLowerCase());
+        if (existingIndex !== -1) {
+            // Update existing client
+            this.savedClients[existingIndex] = { ...client, id: this.savedClients[existingIndex].id };
+        } else {
+            // Add new client
+            this.savedClients.unshift(client);
+
+            // Keep only MAX_CLIENTS
+            if (this.savedClients.length > this.MAX_CLIENTS) {
+                this.savedClients = this.savedClients.slice(0, this.MAX_CLIENTS);
+            }
+        }
+
+        this.persistClients();
+        this.renderClientDropdown();
+
+        // Visual feedback - change text to "Saved"
+        const originalHTML = this.saveClientBtn.innerHTML;
+        this.saveClientBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Saved
+        `;
+        this.saveClientBtn.classList.add('saved');
+        setTimeout(() => {
+            this.saveClientBtn.innerHTML = originalHTML;
+            this.saveClientBtn.classList.remove('saved');
+        }, 1500);
+    }
+
+    applyClient(clientId) {
+        const client = this.savedClients.find(c => c.id === clientId);
+        if (!client) return;
+
+        this.clientNameInput.value = client.name || '';
+        this.clientEmailInput.value = client.email || '';
+        this.clientPhoneInput.value = client.phone || '';
+        this.clientAddressInput.value = client.address || '';
+
+        this.updateClientInfo();
+    }
+
+    deleteClient(clientId) {
+        this.savedClients = this.savedClients.filter(c => c.id !== clientId);
+        this.persistClients();
+        this.renderClientDropdown();
+    }
+
+    renderClientDropdown() {
+        // Clear existing options except the placeholder
+        this.clientHistorySelect.innerHTML = '<option value="">Load saved client...</option>';
+
+        this.savedClients.forEach(client => {
+            const option = document.createElement('option');
+            option.value = client.id;
+            option.textContent = client.name;
+            option.dataset.clientId = client.id;
+            this.clientHistorySelect.appendChild(option);
+        });
+    }
+
+    handleClientSelect(e) {
+        const clientId = parseInt(e.target.value);
+        if (clientId) {
+            this.applyClient(clientId);
+        }
+        // Reset dropdown to placeholder
+        e.target.value = '';
+    }
+
+    persistClients() {
+        try {
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.savedClients));
+        } catch (e) {
+            console.error('Failed to save clients:', e);
+        }
     }
 
     // Column Management
