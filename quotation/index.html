@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Studio — Professional Invoice Generator | Innovgeist</title>
+    <title>Quotation Studio — Professional Quotation Maker | Innovgeist</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Create professional invoices instantly with Invoice Studio. Free online invoice generator with customizable templates, multi-currency support, tax calculations, and PDF export.">
-    <meta name="keywords" content="invoice generator, free invoice maker, online invoice, billing software, invoice template, PDF invoice, Innovgeist, professional invoices">
+    <meta name="description" content="Create professional quotations instantly with Quotation Studio. Free online quotation maker with customizable templates, multi-currency support, tax calculations, and PDF export.">
+    <meta name="keywords" content="quotation generator, free quotation maker, online quotation, quote maker, quotation template, PDF quotation, Innovgeist, professional quotations">
     <meta name="author" content="Innovgeist">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://invoice.innovgeist.com">
-    <meta property="og:title" content="Invoice Studio — Professional Invoice Generator">
-    <meta property="og:description" content="Create beautiful, professional invoices in seconds. Free online invoice generator with live preview, multi-currency support, and PDF export.">
-    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://invoice.innovgeist.com/quotation">
+    <meta property="og:title" content="Quotation Studio — Professional Quotation Maker">
+    <meta property="og:description" content="Create beautiful, professional quotations in seconds. Free online quotation maker with live preview, multi-currency support, and PDF export.">
+    <meta property="og:image" content="../logo.png">
     <meta property="og:site_name" content="Innovgeist">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://invoice.innovgeist.com">
-    <meta name="twitter:title" content="Invoice Studio — Professional Invoice Generator">
-    <meta name="twitter:description" content="Create beautiful, professional invoices in seconds. Free online invoice generator with live preview, multi-currency support, and PDF export.">
-    <meta name="twitter:image" content="logo.png">
+    <meta name="twitter:url" content="https://invoice.innovgeist.com/quotation">
+    <meta name="twitter:title" content="Quotation Studio — Professional Quotation Maker">
+    <meta name="twitter:description" content="Create beautiful, professional quotations in seconds. Free online quotation maker with live preview, multi-currency support, and PDF export.">
+    <meta name="twitter:image" content="../logo.png">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://invoice.innovgeist.com">
+    <link rel="canonical" href="https://invoice.innovgeist.com/quotation">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="apple-touch-icon" href="../logo.png">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#000000">
@@ -49,22 +49,22 @@
         <!-- Sidebar Controls -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1 class="logo">Invoice<span>Studio</span></h1>
+                <h1 class="logo">Quotation<span>Studio</span></h1>
                 <nav class="app-nav">
-                    <a href="index.html" class="nav-tab nav-tab--active" aria-current="page">
+                    <a href="../index.html" class="nav-tab">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
                         </svg>
                         Invoice
                     </a>
-                    <a href="quotation/index.html" class="nav-tab">
+                    <a href="index.html" class="nav-tab nav-tab--active" aria-current="page">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
                         </svg>
                         Quotation
                     </a>
                 </nav>
-                <p class="tagline">Craft beautiful invoices</p>
+                <p class="tagline">Craft professional quotations</p>
             </div>
 
             <div class="sidebar-content">
@@ -84,15 +84,15 @@
                             </svg>
                             <span>Upload Logo</span>
                         </div>
-                        <img id="logoPreview" class="logo-preview" style="display: none;">
+                        <img id="logoPreview" class="logo-preview" src="" alt="Logo Preview" style="display: none;">
                         <input type="file" id="logoInput" accept="image/*" hidden>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" id="companyName" placeholder="Company Name" value="Innovgeist">
-                        <input type="text" id="companyEmail" placeholder="Email Address" value="sales@innovgeist.com">
-                        <input type="text" id="companyPhone" placeholder="Phone Number" value="+91-9305602733">
-                        <textarea id="companyAddress" placeholder="Business Address" rows="3">119/501 Darshan Purwa, R.K. Nagar, Kanpur, 208012, Uttar Pradesh</textarea>
+                        <input type="text" id="companyName" placeholder="Company name" value="Innovgeist">
+                        <input type="email" id="companyEmail" placeholder="Email address" value="sales@innovgeist.com">
+                        <input type="tel" id="companyPhone" placeholder="Phone number" value="+91-9305602733">
+                        <textarea id="companyAddress" placeholder="Business address" rows="2">119/501 Darshan Purwa, R.K. Nagar, Kanpur, 208012, Uttar Pradesh</textarea>
                     </div>
                 </section>
 
@@ -104,10 +104,10 @@
                     </h3>
 
                     <div class="input-group">
-                        <input type="text" id="clientName" placeholder="Client Name">
-                        <input type="text" id="clientEmail" placeholder="Client Email">
-                        <input type="text" id="clientPhone" placeholder="Client Phone">
-                        <textarea id="clientAddress" placeholder="Client Address" rows="2"></textarea>
+                        <input type="text" id="clientName" placeholder="Client name">
+                        <input type="email" id="clientEmail" placeholder="Client email">
+                        <input type="tel" id="clientPhone" placeholder="Client phone">
+                        <textarea id="clientAddress" placeholder="Client address" rows="2"></textarea>
                     </div>
 
                     <div class="client-history-controls">
@@ -127,18 +127,18 @@
                     </div>
                 </section>
 
-                <!-- Invoice Details -->
+                <!-- Quotation Info -->
                 <section class="control-section">
                     <h3 class="section-title">
                         <span class="section-number">03</span>
-                        Invoice Info
+                        Quotation Info
                     </h3>
 
                     <div class="input-group">
                         <div class="input-row">
                             <div class="input-with-label">
-                                <label>Invoice #</label>
-                                <input type="text" id="invoiceNumber" value="INV-001">
+                                <label>Quotation #</label>
+                                <input type="text" id="quotationNumber" value="QUO-001">
                             </div>
                             <div class="input-with-label">
                                 <label>Currency</label>
@@ -158,12 +158,16 @@
                         <div class="input-row">
                             <div class="input-with-label">
                                 <label>Issue Date</label>
-                                <input type="date" id="invoiceDate">
+                                <input type="date" id="quotationDate">
                             </div>
                             <div class="input-with-label">
-                                <label>Due Date</label>
-                                <input type="date" id="dueDate">
+                                <label>Valid Until</label>
+                                <input type="date" id="validUntil">
                             </div>
+                        </div>
+                        <div class="input-with-label">
+                            <label>Reference</label>
+                            <input type="text" id="quotationRef" placeholder="e.g. Project name or PO#">
                         </div>
                     </div>
                 </section>
@@ -249,8 +253,8 @@
                     </h3>
 
                     <div class="input-group">
-                        <textarea id="notes" placeholder="Additional notes for your client..." rows="3">Thank you for your business! Payment is due within the specified timeframe.</textarea>
-                        <textarea id="terms" placeholder="Payment terms..." rows="2">Bank Transfer or PayPal accepted. Late payments subject to 2% monthly fee.</textarea>
+                        <textarea id="notes" placeholder="Additional notes for your client..." rows="3">This quotation is valid for the duration specified. Prices are subject to change after expiry.</textarea>
+                        <textarea id="terms" placeholder="Terms and conditions..." rows="2">50% advance payment required to commence work. Balance due upon completion.</textarea>
                     </div>
                 </section>
 
@@ -287,7 +291,7 @@
             </div>
         </aside>
 
-        <!-- Invoice Preview -->
+        <!-- Quotation Preview -->
         <main class="preview-area">
             <div class="preview-header">
                 <span class="preview-badge">Live Preview</span>
@@ -295,11 +299,11 @@
 
             <div class="invoice-wrapper">
                 <div class="invoice" id="invoice">
-                    <!-- Invoice Header -->
+                    <!-- Quotation Header -->
                     <header class="invoice-header">
                         <div class="invoice-brand">
                             <div class="brand-logo" id="invoiceLogo">
-                                <img src="logo.png" alt="Company Logo" class="logo-image-invoice" id="invoiceLogoImg">
+                                <img src="../logo.png" alt="Company Logo" class="logo-image-invoice" id="invoiceLogoImg">
                             </div>
                             <div class="brand-info">
                                 <h2 class="brand-name" id="displayCompanyName">Innovgeist</h2>
@@ -309,27 +313,31 @@
                             </div>
                         </div>
                         <div class="invoice-meta">
-                            <div class="invoice-title">INVOICE</div>
+                            <div class="invoice-title">QUOTATION</div>
                             <div class="meta-details">
                                 <div class="meta-row">
-                                    <span class="meta-label">Invoice No.</span>
-                                    <span class="meta-value" id="displayInvoiceNumber">INV-001</span>
+                                    <span class="meta-label">Quotation No.</span>
+                                    <span class="meta-value" id="displayQuotationNumber">QUO-001</span>
                                 </div>
                                 <div class="meta-row">
                                     <span class="meta-label">Issue Date</span>
-                                    <span class="meta-value" id="displayInvoiceDate">—</span>
+                                    <span class="meta-value" id="displayQuotationDate">—</span>
                                 </div>
                                 <div class="meta-row highlight">
-                                    <span class="meta-label">Due Date</span>
-                                    <span class="meta-value" id="displayDueDate">—</span>
+                                    <span class="meta-label">Valid Until</span>
+                                    <span class="meta-value" id="displayValidUntil">—</span>
+                                </div>
+                                <div class="meta-row" id="refRow" style="display: none;">
+                                    <span class="meta-label">Reference</span>
+                                    <span class="meta-value" id="displayQuotationRef">—</span>
                                 </div>
                             </div>
                         </div>
                     </header>
 
-                    <!-- Bill To Section -->
+                    <!-- Prepared For Section -->
                     <section class="bill-to">
-                        <div class="bill-to-label">BILL TO</div>
+                        <div class="bill-to-label">PREPARED FOR</div>
                         <div class="client-info">
                             <h3 class="client-name" id="displayClientName">Client Name</h3>
                             <p class="client-contact" id="displayClientEmail"></p>
@@ -376,7 +384,7 @@
                                 <span id="taxAmount">$0.00</span>
                             </div>
                             <div class="total-row grand-total">
-                                <span>Total Due</span>
+                                <span>Total Value</span>
                                 <span id="grandTotal">$0.00</span>
                             </div>
                         </div>
@@ -386,11 +394,11 @@
                     <footer class="invoice-footer">
                         <div class="footer-section" id="notesSection">
                             <h4>Notes</h4>
-                            <p id="displayNotes">Thank you for your business! Payment is due within the specified timeframe.</p>
+                            <p id="displayNotes">This quotation is valid for the duration specified. Prices are subject to change after expiry.</p>
                         </div>
                         <div class="footer-section" id="termsSection">
-                            <h4>Payment Terms</h4>
-                            <p id="displayTerms">Bank Transfer or PayPal accepted. Late payments subject to 2% monthly fee.</p>
+                            <h4>Terms & Conditions</h4>
+                            <p id="displayTerms">50% advance payment required to commence work. Balance due upon completion.</p>
                         </div>
                         <div class="footer-signature">
                             <div class="signature-image-container" id="signatureImageContainer">
